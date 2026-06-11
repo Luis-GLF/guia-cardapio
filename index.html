@@ -1,0 +1,845 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guia: Cardápio Digital Italiano — HTML & CSS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- CABEÇALHO DO GUIA -->
+<header class="guia-hero">
+  <p class="eyebrow">Guia Didático · HTML & CSS</p>
+  <h1>Cardápio Digital Italiano</h1>
+  <p>Aprenda a construir uma página de cardápio elegante, do zero, com explicações passo a passo e código comentado.</p>
+  <div class="badge-row">
+    <span class="badge">Iniciante / Intermediário</span>
+    <span class="badge">HTML5</span>
+    <span class="badge">CSS3</span>
+    <span class="badge">Google Fonts</span>
+    <span class="badge">CSS Grid</span>
+    <span class="badge">Responsivo</span>
+  </div>
+</header>
+
+<!-- NAVEGAÇÃO -->
+<nav class="guia-nav" aria-label="Índice do guia">
+  <ul>
+    <li><a href="#s0">Preview</a></li>
+    <li><a href="#s1">1. Estrutura</a></li>
+    <li><a href="#s2">2. HTML do Cardápio</a></li>
+    <li><a href="#s3">3. CSS Geral</a></li>
+    <li><a href="#s4">4. Bloco Menu</a></li>
+    <li><a href="#s5">5. Faixas Tricolor</a></li>
+    <li><a href="#s6">6. Cabeçalho</a></li>
+    <li><a href="#s7">7. Seções</a></li>
+    <li><a href="#s8">8. Pratos</a></li>
+    <li><a href="#s9">9. Rodapé</a></li>
+    <li><a href="#s10">10. Responsivo</a></li>
+    <li><a href="#s11">11. Personalização</a></li>
+    <li><a href="#s12">12. Melhorias</a></li>
+  </ul>
+</nav>
+
+<main class="guia-wrapper">
+
+  <!-- INTRO & PREVIEW -->
+  <section class="passo" id="s0">
+    <p>Neste guia você vai construir uma página de cardápio digital com aparência de cardápio clássico italiano — impresso em papel creme, com faixas tricolores, tipografia elegante e layout organizado por categorias.</p>
+    <p>Ao final, seu resultado será parecido com este preview:</p>
+
+    <div class="demo-wrap">
+      <div class="demo-bar">
+        <span class="demo-dot r"></span>
+        <span class="demo-dot y"></span>
+        <span class="demo-dot g"></span>
+        <span class="demo-label">trattoria-da-nonna.html</span>
+      </div>
+      <div class="demo-frame">
+        <div class="preview-menu">
+          <div class="prev-tricolor">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="prev-header">
+            <p class="prev-eyebrow">Cucina Italiana</p>
+            <h1 class="prev-title">Trattoria da Nonna</h1>
+            <p class="prev-sub">Dal 1987 &mdash; Via Roma, 42</p>
+          </div>
+          <div class="prev-section">
+            <h3>Antipasti</h3>
+            <div class="prev-dish">
+              <b>Bruschetta al Pomodoro</b><span>R$ 22</span>
+              <i>Pão rústico tostado com tomate, alho e manjericão</i>
+            </div>
+            <div class="prev-dish">
+              <b>Carpaccio di Manzo</b><span>R$ 38</span>
+              <i>Fatias de filé cru, rúcula e parmesão</i>
+            </div>
+          </div>
+          <div class="prev-section">
+            <h3>Primi Piatti</h3>
+            <div class="prev-dish">
+              <b>Spaghetti alla Carbonara</b><span>R$ 49</span>
+              <i>Guanciale, ovo, pecorino e pimenta-do-reino</i>
+            </div>
+            <div class="prev-dish">
+              <b>Pappardelle al Ragù</b><span>R$ 52</span>
+              <i>Massa fresca com ragù de costela ao vinho tinto</i>
+            </div>
+          </div>
+          <div class="prev-section">
+            <h3>Dolci</h3>
+            <div class="prev-dish">
+              <b>Tiramisù della Casa</b><span>R$ 28</span>
+              <i>Receita da nonna com mascarpone e café espresso</i>
+            </div>
+          </div>
+          <div class="prev-footer">
+            <p class="prev-buon">Buon Appetito!</p>
+            <p class="prev-addr">Via Roma, 42 &mdash; Centro &bull; (98) 99999-0000</p>
+          </div>
+          <div class="prev-tricolor">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p>Vamos construir isso do zero. Crie uma pasta com dois arquivos: <code>index.html</code> e <code>styles.css</code>.</p>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- PASSO 1 -->
+  <section class="passo" id="s1">
+    <div class="passo-header">
+      <div class="passo-num">1</div>
+      <h2>Estrutura Básica do HTML</h2>
+    </div>
+    <p>Todo arquivo HTML começa com uma estrutura padrão. Abra o arquivo <code>index.html</code> e escreva:</p>
+
+    <div class="code-block">
+      <div class="code-label">📄 index.html — estrutura base</div>
+<pre><code><span class="cm">&lt;!-- Declara o tipo do documento (sempre na 1ª linha) --&gt;</span>
+<span class="ct">&lt;!DOCTYPE html&gt;</span>
+
+<span class="cm">&lt;!-- lang="pt-BR" diz ao navegador o idioma da página --&gt;</span>
+<span class="ct">&lt;html</span> <span class="ca">lang</span>="pt-BR"<span class="ct">&gt;</span>
+
+<span class="ct">&lt;head&gt;</span>
+  <span class="cm">&lt;!-- UTF-8 garante que acentos e cedilhas apareçam certo --&gt;</span>
+  <span class="ct">&lt;meta</span> <span class="ca">charset</span>="UTF-8" <span class="ct">/&gt;</span>
+
+  <span class="cm">&lt;!-- viewport faz a página se adaptar ao tamanho da tela --&gt;</span>
+  <span class="ct">&lt;meta</span> <span class="ca">name</span>="viewport" <span class="ca">content</span>="width=device-width, initial-scale=1.0" <span class="ct">/&gt;</span>
+
+  <span class="ct">&lt;title&gt;</span>Trattoria da Nonna — Cardápio<span class="ct">&lt;/title&gt;</span>
+
+  <span class="cm">&lt;!-- Importa as fontes do Google Fonts --&gt;</span>
+  <span class="ct">&lt;link</span> <span class="ca">rel</span>="preconnect" <span class="ca">href</span>="https://fonts.googleapis.com" <span class="ct">/&gt;</span>
+  <span class="ct">&lt;link</span> <span class="ca">rel</span>="preconnect" <span class="ca">href</span>="https://fonts.gstatic.com" <span class="ca">crossorigin</span> <span class="ct">/&gt;</span>
+  <span class="ct">&lt;link</span> <span class="ca">href</span>="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&amp;family=Source+Serif+4:ital,wght@0,400;1,400&amp;family=Inter:wght@400;600&amp;display=swap" <span class="ca">rel</span>="stylesheet" <span class="ct">/&gt;</span>
+
+  <span class="cm">&lt;!-- Conecta o arquivo de estilos externo --&gt;</span>
+  <span class="ct">&lt;link</span> <span class="ca">rel</span>="stylesheet" <span class="ca">href</span>="styles.css" <span class="ct">/&gt;</span>
+<span class="ct">&lt;/head&gt;</span>
+
+<span class="ct">&lt;body&gt;</span>
+  <span class="cm">&lt;!-- Conteúdo da página vai aqui --&gt;</span>
+<span class="ct">&lt;/body&gt;</span>
+
+<span class="ct">&lt;/html&gt;</span></code></pre>
+    </div>
+
+    <div class="info-box">
+      <strong>Por que três fontes?</strong><br>
+      Usamos <strong>Playfair Display</strong> (decorativa/display) para o título do restaurante — ela tem personalidade e remetê à tipografia clássica italiana. <strong>Source Serif 4</strong> (serifada) para textos longos como descrições dos pratos, pois é mais legível em blocos. <strong>Inter</strong> (sem serifa) para preços, títulos de seção e rótulos — onde precisamos de clareza e modernidade.
+    </div>
+
+    <h3>As três fontes e seus papéis</h3>
+    <ul>
+      <li><code>Playfair Display</code> — título principal do restaurante</li>
+      <li><code>Source Serif 4</code> — fonte base da página (descrições, textos)</li>
+      <li><code>Inter</code> — seções, preços, elementos de interface</li>
+    </ul>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- PASSO 2 -->
+  <section class="passo" id="s2">
+    <div class="passo-header">
+      <div class="passo-num">2</div>
+      <h2>Construindo o HTML do Cardápio</h2>
+    </div>
+    <p>Agora vamos preencher o <code>&lt;body&gt;</code> com toda a estrutura do cardápio. Substitua o comentário do body pelo código abaixo:</p>
+
+    <div class="code-block">
+      <div class="code-label">📄 index.html — dentro do &lt;body&gt;</div>
+<pre><code><span class="cm">&lt;!-- article é o elemento semântico correto para um cardápio --&gt;</span>
+<span class="ct">&lt;article</span> <span class="ca">class</span>="menu"<span class="ct">&gt;</span>
+
+  <span class="cm">&lt;!-- Faixa decorativa tricolor no topo (verde-branco-vermelho) --&gt;</span>
+  <span class="ct">&lt;div</span> <span class="ca">class</span>="tricolor"<span class="ct">&gt;&lt;/div&gt;</span>
+
+  <span class="cm">&lt;!-- Cabeçalho do restaurante --&gt;</span>
+  <span class="ct">&lt;header</span> <span class="ca">class</span>="menu-header"<span class="ct">&gt;</span>
+    <span class="ct">&lt;p</span> <span class="ca">class</span>="eyebrow"<span class="ct">&gt;</span>Cucina Italiana<span class="ct">&lt;/p&gt;</span>
+    <span class="ct">&lt;h1&gt;</span>Trattoria da Nonna<span class="ct">&lt;/h1&gt;</span>
+    <span class="ct">&lt;p</span> <span class="ca">class</span>="subtitle"<span class="ct">&gt;</span>Dal 1987 &amp;mdash; Via Roma, 42<span class="ct">&lt;/p&gt;</span>
+  <span class="ct">&lt;/header&gt;</span>
+
+  <span class="cm">&lt;!-- ===== SEÇÃO: ANTIPASTI ===== --&gt;</span>
+  <span class="ct">&lt;section</span> <span class="ca">class</span>="sec"<span class="ct">&gt;</span>
+    <span class="ct">&lt;h2&gt;</span>Antipasti<span class="ct">&lt;/h2&gt;</span>
+
+    <span class="ct">&lt;div</span> <span class="ca">class</span>="dish"<span class="ct">&gt;</span>
+      <span class="ct">&lt;b&gt;</span>Bruschetta al Pomodoro<span class="ct">&lt;/b&gt;</span>
+      <span class="ct">&lt;span&gt;</span>R$ 22<span class="ct">&lt;/span&gt;</span>
+      <span class="ct">&lt;i&gt;</span>Pão rústico tostado com tomate, alho e manjericão fresco<span class="ct">&lt;/i&gt;</span>
+    <span class="ct">&lt;/div&gt;</span>
+
+    <span class="ct">&lt;div</span> <span class="ca">class</span>="dish"<span class="ct">&gt;</span>
+      <span class="ct">&lt;b&gt;</span>Carpaccio di Manzo<span class="ct">&lt;/b&gt;</span>
+      <span class="ct">&lt;span&gt;</span>R$ 38<span class="ct">&lt;/span&gt;</span>
+      <span class="ct">&lt;i&gt;</span>Fatias finas de filé cru com rúcula, parmesão e alcaparras<span class="ct">&lt;/i&gt;</span>
+    <span class="ct">&lt;/div&gt;</span>
+
+  <span class="ct">&lt;/section&gt;</span>
+
+  <span class="cm">&lt;!-- ===== SEÇÃO: PRIMI PIATTI ===== --&gt;</span>
+  <span class="ct">&lt;section</span> <span class="ca">class</span>="sec"<span class="ct">&gt;</span>
+    <span class="ct">&lt;h2&gt;</span>Primi Piatti<span class="ct">&lt;/h2&gt;</span>
+
+    <span class="ct">&lt;div</span> <span class="ca">class</span>="dish"<span class="ct">&gt;</span>
+      <span class="ct">&lt;b&gt;</span>Spaghetti alla Carbonara<span class="ct">&lt;/b&gt;</span>
+      <span class="ct">&lt;span&gt;</span>R$ 49<span class="ct">&lt;/span&gt;</span>
+      <span class="ct">&lt;i&gt;</span>Guanciale, gema de ovo, pecorino e pimenta-do-reino<span class="ct">&lt;/i&gt;</span>
+    <span class="ct">&lt;/div&gt;</span>
+
+    <span class="ct">&lt;div</span> <span class="ca">class</span>="dish"<span class="ct">&gt;</span>
+      <span class="ct">&lt;b&gt;</span>Pappardelle al Ragù<span class="ct">&lt;/b&gt;</span>
+      <span class="ct">&lt;span&gt;</span>R$ 52<span class="ct">&lt;/span&gt;</span>
+      <span class="ct">&lt;i&gt;</span>Massa fresca com ragù de costela ao vinho tinto<span class="ct">&lt;/i&gt;</span>
+    <span class="ct">&lt;/div&gt;</span>
+
+    <span class="ct">&lt;div</span> <span class="ca">class</span>="dish"<span class="ct">&gt;</span>
+      <span class="ct">&lt;b&gt;</span>Risotto ai Funghi Porcini<span class="ct">&lt;/b&gt;</span>
+      <span class="ct">&lt;span&gt;</span>R$ 58<span class="ct">&lt;/span&gt;</span>
+      <span class="ct">&lt;i&gt;</span>Arroz arbóreo com funghi porcini, vinho branco e parmesão<span class="ct">&lt;/i&gt;</span>
+    <span class="ct">&lt;/div&gt;</span>
+
+  <span class="ct">&lt;/section&gt;</span>
+
+  <span class="cm">&lt;!-- ===== SEÇÃO: SECONDI ===== --&gt;</span>
+  <span class="ct">&lt;section</span> <span class="ca">class</span>="sec"<span class="ct">&gt;</span>
+    <span class="ct">&lt;h2&gt;</span>Secondi<span class="ct">&lt;/h2&gt;</span>
+
+    <span class="ct">&lt;div</span> <span class="ca">class</span>="dish"<span class="ct">&gt;</span>
+      <span class="ct">&lt;b&gt;</span>Saltimbocca alla Romana<span class="ct">&lt;/b&gt;</span>
+      <span class="ct">&lt;span&gt;</span>R$ 74<span class="ct">&lt;/span&gt;</span>
+      <span class="ct">&lt;i&gt;</span>Escalope de vitela com presunto de Parma e sálvia<span class="ct">&lt;/i&gt;</span>
+    <span class="ct">&lt;/div&gt;</span>
+
+  <span class="ct">&lt;/section&gt;</span>
+
+  <span class="cm">&lt;!-- ===== SEÇÃO: PIZZE ===== --&gt;</span>
+  <span class="ct">&lt;section</span> <span class="ca">class</span>="sec"<span class="ct">&gt;</span>
+    <span class="ct">&lt;h2&gt;</span>Pizze<span class="ct">&lt;/h2&gt;</span>
+
+    <span class="ct">&lt;div</span> <span class="ca">class</span>="dish"<span class="ct">&gt;</span>
+      <span class="ct">&lt;b&gt;</span>Margherita<span class="ct">&lt;/b&gt;</span>
+      <span class="ct">&lt;span&gt;</span>R$ 45<span class="ct">&lt;/span&gt;</span>
+      <span class="ct">&lt;i&gt;</span>Molho de tomate san marzano, mozzarella de búfala e manjericão<span class="ct">&lt;/i&gt;</span>
+    <span class="ct">&lt;/div&gt;</span>
+
+    <span class="ct">&lt;div</span> <span class="ca">class</span>="dish"<span class="ct">&gt;</span>
+      <span class="ct">&lt;b&gt;</span>Quattro Formaggi<span class="ct">&lt;/b&gt;</span>
+      <span class="ct">&lt;span&gt;</span>R$ 54<span class="ct">&lt;/span&gt;</span>
+      <span class="ct">&lt;i&gt;</span>Mozzarella, gorgonzola, grana padano e brie<span class="ct">&lt;/i&gt;</span>
+    <span class="ct">&lt;/div&gt;</span>
+
+  <span class="ct">&lt;/section&gt;</span>
+
+  <span class="cm">&lt;!-- ===== SEÇÃO: DOLCI (SOBREMESAS) ===== --&gt;</span>
+  <span class="ct">&lt;section</span> <span class="ca">class</span>="sec"<span class="ct">&gt;</span>
+    <span class="ct">&lt;h2&gt;</span>Dolci<span class="ct">&lt;/h2&gt;</span>
+
+    <span class="ct">&lt;div</span> <span class="ca">class</span>="dish"<span class="ct">&gt;</span>
+      <span class="ct">&lt;b&gt;</span>Tiramisù della Casa<span class="ct">&lt;/b&gt;</span>
+      <span class="ct">&lt;span&gt;</span>R$ 28<span class="ct">&lt;/span&gt;</span>
+      <span class="ct">&lt;i&gt;</span>Receita da nonna com mascarpone e café espresso<span class="ct">&lt;/i&gt;</span>
+    <span class="ct">&lt;/div&gt;</span>
+
+    <span class="ct">&lt;div</span> <span class="ca">class</span>="dish"<span class="ct">&gt;</span>
+      <span class="ct">&lt;b&gt;</span>Panna Cotta ai Frutti di Bosco<span class="ct">&lt;/b&gt;</span>
+      <span class="ct">&lt;span&gt;</span>R$ 24<span class="ct">&lt;/span&gt;</span>
+      <span class="ct">&lt;i&gt;</span>Creme de baunilha com calda de frutas vermelhas<span class="ct">&lt;/i&gt;</span>
+    <span class="ct">&lt;/div&gt;</span>
+
+  <span class="ct">&lt;/section&gt;</span>
+
+  <span class="cm">&lt;!-- Rodapé do cardápio --&gt;</span>
+  <span class="ct">&lt;footer</span> <span class="ca">class</span>="menu-footer"<span class="ct">&gt;</span>
+    <span class="ct">&lt;p</span> <span class="ca">class</span>="ornament"<span class="ct">&gt;</span>&amp;mdash; &amp;fleur; &amp;mdash;<span class="ct">&lt;/p&gt;</span>
+    <span class="ct">&lt;p</span> <span class="ca">class</span>="buon"<span class="ct">&gt;</span>Buon Appetito!<span class="ct">&lt;/p&gt;</span>
+    <span class="ct">&lt;address&gt;</span>Via Roma, 42 — Centro · (98) 99999-0000<span class="ct">&lt;/address&gt;</span>
+  <span class="ct">&lt;/footer&gt;</span>
+
+  <span class="cm">&lt;!-- Segunda faixa tricolor no final --&gt;</span>
+  <span class="ct">&lt;div</span> <span class="ca">class</span>="tricolor bottom"<span class="ct">&gt;&lt;/div&gt;</span>
+
+<span class="ct">&lt;/article&gt;</span></code></pre>
+    </div>
+
+    <div class="info-box">
+      <strong>Por que <code>&lt;article&gt;</code>?</strong><br>
+      Em HTML semântico, <code>&lt;article&gt;</code> representa um conteúdo autônomo e reutilizável — como um cardápio. Isso ajuda motores de busca e leitores de tela a entenderem a estrutura da página. Poderíamos usar <code>&lt;div&gt;</code>, mas <code>&lt;article&gt;</code> é mais preciso semanticamente.
+    </div>
+
+    <h3>Estrutura de cada prato</h3>
+    <p>Cada prato usa três elementos dentro de uma <code>.dish</code>:</p>
+    <ul>
+      <li><code>&lt;b&gt;</code> — nome do prato em negrito</li>
+      <li><code>&lt;span&gt;</code> — preço (vai para a direita via CSS Grid)</li>
+      <li><code>&lt;i&gt;</code> — descrição em itálico, em linha separada</li>
+    </ul>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- PASSO 3 -->
+  <section class="passo" id="s3">
+    <div class="passo-header">
+      <div class="passo-num">3</div>
+      <h2>CSS Geral — Reset e Variáveis</h2>
+    </div>
+    <p>Abra o arquivo <code>styles.css</code>. Começamos com o reset e as variáveis de cor, que controlam toda a paleta do projeto:</p>
+
+    <div class="code-block">
+      <div class="code-label">🎨 styles.css — parte 1: reset e variáveis</div>
+<pre><code><span class="cm">/* Reset universal — evita diferenças entre navegadores */</span>
+<span class="cs">*, *::before, *::after</span> {
+  <span class="cp">box-sizing</span>: <span class="cv">border-box</span>;
+}
+
+<span class="cm">/* Variáveis CSS: mude aqui para alterar toda a paleta */</span>
+<span class="cs">:root</span> {
+  <span class="cp">--verde</span>:    <span class="cv">#009246</span>;   <span class="cm">/* verde da bandeira italiana */</span>
+  <span class="cp">--vermelho</span>: <span class="cv">#ce2b37</span>;   <span class="cm">/* vermelho da bandeira italiana */</span>
+  <span class="cp">--texto</span>:    <span class="cv">#1a1a1a</span>;   <span class="cm">/* quase-preto para o texto */</span>
+  <span class="cp">--texto2</span>:   <span class="cv">#666666</span>;   <span class="cm">/* cinza para textos secundários */</span>
+  <span class="cp">--papel</span>:    <span class="cv">#f8f3e6</span>;   <span class="cm">/* bege creme do "papel" */</span>
+  <span class="cp">--pontilhado</span>: <span class="cv">#c8b8a0</span>; <span class="cm">/* cor da linha pontilhada entre nome e preço */</span>
+}
+
+<span class="cm">/* Estilo base do corpo da página */</span>
+<span class="cs">body</span> {
+  <span class="cp">margin</span>: <span class="cv">0</span>;
+  <span class="cp">padding</span>: <span class="cv">clamp(1rem, 4vw, 2.5rem)</span>;
+  <span class="cm">/* Fundo verde-escuro em degradê radial — cria sensação de mesa/tablado */</span>
+  <span class="cp">background</span>: <span class="cv">radial-gradient(ellipse at center, #2a4a1e 0%, #0d1f0a 100%)</span>;
+  <span class="cp">min-height</span>: <span class="cv">100vh</span>;
+  <span class="cm">/* Fonte serifada como padrão — cria o tom editorial do cardápio */</span>
+  <span class="cp">font-family</span>: <span class="cv">'Source Serif 4', Georgia, serif</span>;
+  <span class="cp">color</span>: <span class="cv">var(--texto)</span>;
+}</code></pre>
+    </div>
+
+    <div class="info-box">
+      <strong>O que são variáveis CSS?</strong><br>
+      Declaradas com <code>--nome: valor</code> dentro de <code>:root</code>, as variáveis ficam disponíveis em todo o arquivo CSS. Para usar uma variável, escreva <code>var(--nome)</code>. Isso facilita muito a personalização: basta mudar o valor em <code>:root</code> e a cor muda em toda a página.
+    </div>
+
+    <h3>Paleta de cores usada</h3>
+    <div class="color-grid">
+      <div class="color-card">
+        <div class="color-swatch" style="background:#009246;"></div>
+        <div class="color-info"><div class="color-name">--verde</div><div class="color-hex">#009246</div></div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#ce2b37;"></div>
+        <div class="color-info"><div class="color-name">--vermelho</div><div class="color-hex">#ce2b37</div></div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#1a1a1a;"></div>
+        <div class="color-info"><div class="color-name">--texto</div><div class="color-hex">#1a1a1a</div></div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#666;"></div>
+        <div class="color-info"><div class="color-name">--texto2</div><div class="color-hex">#666666</div></div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#f8f3e6; border-top:1px solid #ddd;"></div>
+        <div class="color-info"><div class="color-name">--papel</div><div class="color-hex">#f8f3e6</div></div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#c8b8a0;"></div>
+        <div class="color-info"><div class="color-name">--pontilhado</div><div class="color-hex">#c8b8a0</div></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- PASSO 4 -->
+  <section class="passo" id="s4">
+    <div class="passo-header">
+      <div class="passo-num">4</div>
+      <h2>Estilizando o Bloco do Cardápio</h2>
+    </div>
+    <p>O <code>.menu</code> é o "cardápio físico" — precisa ter aparência de papel, centralização e sombra.</p>
+
+    <div class="code-block">
+      <div class="code-label">🎨 styles.css — bloco .menu</div>
+<pre><code><span class="cm">/* O bloco principal do cardápio */</span>
+<span class="cs">.menu</span> {
+  <span class="cp">max-width</span>: <span class="cv">640px</span>;    <span class="cm">/* largura máxima (não estica demais em telas grandes) */</span>
+  <span class="cp">margin</span>: <span class="cv">0 auto</span>;     <span class="cm">/* auto nas laterais = centralizado horizontalmente */</span>
+  <span class="cp">background</span>: <span class="cv">var(--papel)</span>;
+  <span class="cm">/* Sombra intensa cria a ilusão de papel sobre a mesa */</span>
+  <span class="cp">box-shadow</span>: <span class="cv">0 4px 8px rgba(0,0,0,0.2), 0 20px 60px rgba(0,0,0,0.5)</span>;
+  <span class="cp">padding-bottom</span>: <span class="cv">1rem</span>;
+}</code></pre>
+    </div>
+
+    <div class="info-box">
+      <strong>Como <code>margin: 0 auto</code> centraliza?</strong><br>
+      Quando o elemento tem uma largura definida (por <code>max-width</code>) e as margens laterais são <code>auto</code>, o navegador distribui o espaço restante igualmente dos dois lados. O <code>0</code> é para margem superior e inferior.
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- PASSO 5 -->
+  <section class="passo" id="s5">
+    <div class="passo-header">
+      <div class="passo-num">5</div>
+      <h2>As Faixas Tricolores</h2>
+    </div>
+    <p>A faixa tricolor imita a bandeira italiana. Usamos pseudo-elementos <code>::before</code> e <code>::after</code> para criar as partes verde e vermelha sem precisar de elementos HTML extras:</p>
+
+    <div class="code-block">
+      <div class="code-label">🎨 styles.css — faixas tricolores</div>
+<pre><code><span class="cm">/* Contêiner da faixa: flex para alinhar as três partes lado a lado */</span>
+<span class="cs">.tricolor</span> {
+  <span class="cp">display</span>: <span class="cv">flex</span>;
+  <span class="cp">height</span>: <span class="cv">8px</span>;
+  <span class="cp">background</span>: <span class="cv">var(--papel)</span>; <span class="cm">/* parte branca (central) */</span>
+}
+
+<span class="cm">/* Parte verde (esquerda) — criada com ::before */</span>
+<span class="cs">.tricolor::before</span> {
+  <span class="cp">content</span>: <span class="cv">''</span>;       <span class="cm">/* obrigatório para pseudo-elementos aparecerem */</span>
+  <span class="cp">flex</span>: <span class="cv">1</span>;           <span class="cm">/* ocupa 1/3 do espaço disponível */</span>
+  <span class="cp">background</span>: <span class="cv">var(--verde)</span>;
+}
+
+<span class="cm">/* Parte vermelha (direita) — criada com ::after */</span>
+<span class="cs">.tricolor::after</span> {
+  <span class="cp">content</span>: <span class="cv">''</span>;
+  <span class="cp">flex</span>: <span class="cv">1</span>;
+  <span class="cp">background</span>: <span class="cv">var(--vermelho)</span>;
+}
+
+<span class="cm">/* Variação para a faixa do rodapé: espelhada (vermelho-branco-verde) */</span>
+<span class="cs">.tricolor.bottom::before</span> {
+  <span class="cp">background</span>: <span class="cv">var(--vermelho)</span>;
+}
+<span class="cs">.tricolor.bottom::after</span> {
+  <span class="cp">background</span>: <span class="cv">var(--verde)</span>;
+}</code></pre>
+    </div>
+
+    <div class="info-box">
+      <strong>O que é <code>content: ''</code>?</strong><br>
+      Para que <code>::before</code> e <code>::after</code> apareçam visualmente, a propriedade <code>content</code> é obrigatória — mesmo que seja uma string vazia. Sem ela, o pseudo-elemento não é renderizado.
+    </div>
+
+    <div class="tip-box">
+      <strong>Dica:</strong> O elemento <code>.tricolor</code> tem <code>background: var(--papel)</code>, que é a cor creme do cardápio. Isso cria a parte "branca" do tricolor sem precisar de um terceiro elemento. <code>flex: 1</code> nos pseudo-elementos os faz ocupar cada um 1/3 do espaço, deixando o terço do meio para o background do elemento pai.
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- PASSO 6 -->
+  <section class="passo" id="s6">
+    <div class="passo-header">
+      <div class="passo-num">6</div>
+      <h2>Estilizando o Cabeçalho</h2>
+    </div>
+
+    <div class="code-block">
+      <div class="code-label">🎨 styles.css — cabeçalho do cardápio</div>
+<pre><code><span class="cm">/* Centraliza todo o conteúdo do cabeçalho */</span>
+<span class="cs">.menu-header</span> {
+  <span class="cp">text-align</span>: <span class="cv">center</span>;
+  <span class="cp">padding</span>: <span class="cv">2rem clamp(1rem, 6%, 3rem) 1.5rem</span>;
+}
+
+<span class="cm">/* Texto pequeno "Cucina Italiana" acima do título */</span>
+<span class="cs">.menu-header .eyebrow</span> {
+  <span class="cp">font-family</span>: <span class="cv">'Inter', sans-serif</span>;
+  <span class="cp">font-size</span>: <span class="cv">0.7rem</span>;
+  <span class="cp">letter-spacing</span>: <span class="cv">0.25em</span>;  <span class="cm">/* espaçamento exagerado = tom refinado */</span>
+  <span class="cp">text-transform</span>: <span class="cv">uppercase</span>;
+  <span class="cp">color</span>: <span class="cv">var(--vermelho)</span>;
+  <span class="cp">margin</span>: <span class="cv">0 0 0.5rem</span>;
+}
+
+<span class="cm">/* Nome do restaurante — fonte decorativa, tamanho responsivo */</span>
+<span class="cs">.menu-header h1</span> {
+  <span class="cp">font-family</span>: <span class="cv">'Playfair Display', serif</span>;
+  <span class="cm">/* clamp(mínimo, ideal, máximo) — ajusta automaticamente ao tamanho da tela */</span>
+  <span class="cp">font-size</span>: <span class="cv">clamp(1.8rem, 7vw, 3rem)</span>;
+  <span class="cp">color</span>: <span class="cv">var(--verde)</span>;
+  <span class="cp">margin</span>: <span class="cv">0 0 0.5rem</span>;
+  <span class="cp">line-height</span>: <span class="cv">1.1</span>;
+}
+
+<span class="cm">/* Linha secundária com linhas decorativas laterais */</span>
+<span class="cs">.menu-header .subtitle</span> {
+  <span class="cp">font-style</span>: <span class="cv">italic</span>;
+  <span class="cp">color</span>: <span class="cv">var(--texto2)</span>;
+  <span class="cp">font-size</span>: <span class="cv">0.85rem</span>;
+  <span class="cp">margin</span>: <span class="cv">0</span>;
+  <span class="cp">display</span>: <span class="cv">flex</span>;
+  <span class="cp">align-items</span>: <span class="cv">center</span>;
+  <span class="cp">justify-content</span>: <span class="cv">center</span>;
+  <span class="cp">gap</span>: <span class="cv">0.75rem</span>;
+}
+
+<span class="cm">/* Linhas decorativas antes e depois do subtítulo */</span>
+<span class="cs">.menu-header .subtitle::before,
+.menu-header .subtitle::after</span> {
+  <span class="cp">content</span>: <span class="cv">''</span>;
+  <span class="cp">width</span>: <span class="cv">40px</span>;
+  <span class="cp">height</span>: <span class="cv">1px</span>;
+  <span class="cp">background</span>: <span class="cv">var(--pontilhado)</span>;
+}</code></pre>
+    </div>
+
+    <div class="info-box">
+      <strong>O que é <code>clamp()</code>?</strong><br>
+      <code>clamp(mínimo, ideal, máximo)</code> define um valor que se adapta ao contexto. Por exemplo, <code>clamp(1.8rem, 7vw, 3rem)</code> significa: "nunca menor que 1.8rem, nunca maior que 3rem, e idealmente 7% da largura da viewport". É a forma moderna de fazer tipografia responsiva sem media queries.
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- PASSO 7 -->
+  <section class="passo" id="s7">
+    <div class="passo-header">
+      <div class="passo-num">7</div>
+      <h2>Estilizando as Seções</h2>
+    </div>
+
+    <div class="code-block">
+      <div class="code-label">🎨 styles.css — seções e títulos h2</div>
+<pre><code><span class="cm">/* Espaçamento entre as seções do cardápio */</span>
+<span class="cs">.sec</span> {
+  <span class="cp">padding</span>: <span class="cv">1.25rem clamp(1.5rem, 8%, 3rem)</span>;
+}
+
+<span class="cm">/* Título de cada categoria (Antipasti, Pizze, etc.) */</span>
+<span class="cs">.sec h2</span> {
+  <span class="cp">font-family</span>: <span class="cv">'Inter', sans-serif</span>;
+  <span class="cp">font-size</span>: <span class="cv">0.7rem</span>;
+  <span class="cp">font-weight</span>: <span class="cv">600</span>;
+  <span class="cp">letter-spacing</span>: <span class="cv">0.2em</span>;
+  <span class="cp">text-transform</span>: <span class="cv">uppercase</span>;
+  <span class="cp">color</span>: <span class="cv">var(--vermelho)</span>;
+  <span class="cp">margin</span>: <span class="cv">0 0 1rem</span>;
+  <span class="cm">/* flex permite alinhar o texto e a linha decorativa na mesma altura */</span>
+  <span class="cp">display</span>: <span class="cv">flex</span>;
+  <span class="cp">align-items</span>: <span class="cv">center</span>;
+  <span class="cp">gap</span>: <span class="cv">0.75rem</span>;
+}
+
+<span class="cm">/* Linha horizontal decorativa à direita do título da seção */</span>
+<span class="cs">.sec h2::after</span> {
+  <span class="cp">content</span>: <span class="cv">''</span>;
+  <span class="cp">flex</span>: <span class="cv">1</span>;       <span class="cm">/* preenche todo o espaço restante */</span>
+  <span class="cp">height</span>: <span class="cv">1px</span>;
+  <span class="cp">background</span>: <span class="cv">var(--vermelho)</span>;
+  <span class="cp">opacity</span>: <span class="cv">0.3</span>;
+}</code></pre>
+    </div>
+
+    <div class="tip-box">
+      <strong>Truque do <code>flex: 1</code> no <code>::after</code>:</strong> Como o <code>h2</code> tem <code>display: flex</code>, seus filhos (o texto e o <code>::after</code>) se comportam como itens flex. O <code>flex: 1</code> no <code>::after</code> faz ele crescer e preencher todo o espaço horizontal disponível após o texto. Assim a linha sempre termina na borda do cardápio, independente do comprimento do título.
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- PASSO 8 -->
+  <section class="passo" id="s8">
+    <div class="passo-header">
+      <div class="passo-num">8</div>
+      <h2>Estilizando os Pratos com CSS Grid</h2>
+    </div>
+    <p>Cada prato tem três partes visuais: nome, linha pontilhada e preço. O CSS Grid organiza isso perfeitamente:</p>
+
+    <div class="code-block">
+      <div class="code-label">🎨 styles.css — bloco .dish com CSS Grid</div>
+<pre><code><span class="cm">/* Grid com 3 colunas: nome | pontilhado | preço */</span>
+<span class="cs">.dish</span> {
+  <span class="cp">display</span>: <span class="cv">grid</span>;
+  <span class="cm">/* 1fr = todo o espaço restante; auto = tamanho do conteúdo */</span>
+  <span class="cp">grid-template-columns</span>: <span class="cv">1fr auto auto</span>;
+  <span class="cp">column-gap</span>: <span class="cv">0.5rem</span>;
+  <span class="cp">align-items</span>: <span class="cv">baseline</span>; <span class="cm">/* alinha pela linha de base do texto */</span>
+  <span class="cp">margin-bottom</span>: <span class="cv">0.75rem</span>;
+}
+
+<span class="cm">/* Linha pontilhada entre nome e preço */</span>
+<span class="cs">.dish::before</span> {
+  <span class="cp">content</span>: <span class="cv">''</span>;
+  <span class="cp">grid-column</span>: <span class="cv">2</span>;         <span class="cm">/* coluna do meio */</span>
+  <span class="cp">grid-row</span>: <span class="cv">1</span>;
+  <span class="cp">height</span>: <span class="cv">1px</span>;
+  <span class="cp">width</span>: <span class="cv">clamp(20px, 8vw, 60px)</span>;
+  <span class="cp">margin-bottom</span>: <span class="cv">4px</span>;
+  <span class="cm">/* background-image cria o efeito pontilhado */</span>
+  <span class="cp">background-image</span>: <span class="cv">repeating-linear-gradient(
+    to right,
+    var(--pontilhado) 0,
+    var(--pontilhado) 3px,
+    transparent 3px,
+    transparent 7px
+  )</span>;
+}
+
+<span class="cm">/* Nome do prato — fica na coluna 1 da linha 1 automaticamente */</span>
+<span class="cs">.dish b</span> {
+  <span class="cp">font-weight</span>: <span class="cv">600</span>;
+  <span class="cp">font-size</span>: <span class="cv">0.95rem</span>;
+  <span class="cp">color</span>: <span class="cv">var(--texto)</span>;
+}
+
+<span class="cm">/* Preço — fica na coluna 3 */</span>
+<span class="cs">.dish span</span> {
+  <span class="cp">font-family</span>: <span class="cv">'Inter', sans-serif</span>;
+  <span class="cp">font-weight</span>: <span class="cv">600</span>;
+  <span class="cp">font-size</span>: <span class="cv">0.9rem</span>;
+  <span class="cp">color</span>: <span class="cv">var(--verde)</span>;
+  <span class="cp">white-space</span>: <span class="cv">nowrap</span>;  <span class="cm">/* impede quebra de linha no preço */</span>
+}
+
+<span class="cm">/* Descrição — ocupa toda a largura (abaixo do nome+preço) */</span>
+<span class="cs">.dish i</span> {
+  <span class="cp">grid-column</span>: <span class="cv">1 / -1</span>;  <span class="cm">/* -1 = última coluna (vai do início ao fim) */</span>
+  <span class="cp">font-size</span>: <span class="cv">0.82rem</span>;
+  <span class="cp">color</span>: <span class="cv">var(--texto2)</span>;
+  <span class="cp">line-height</span>: <span class="cv">1.4</span>;
+  <span class="cp">margin-top</span>: <span class="cv">2px</span>;
+}</code></pre>
+    </div>
+
+    <div class="info-box">
+      <strong>Como funciona o CSS Grid aqui?</strong><br>
+      Com <code>grid-template-columns: 1fr auto auto</code>, criamos três colunas: a primeira (<code>1fr</code>) ocupa todo o espaço disponível; as outras duas (<code>auto</code>) se ajustam ao conteúdo. O nome do prato fica na col 1, a linha pontilhada na col 2, e o preço na col 3. A descrição usa <code>grid-column: 1 / -1</code> para ocupar as três colunas na segunda linha.
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- PASSO 9 -->
+  <section class="passo" id="s9">
+    <div class="passo-header">
+      <div class="passo-num">9</div>
+      <h2>Estilizando o Rodapé</h2>
+    </div>
+
+    <div class="code-block">
+      <div class="code-label">🎨 styles.css — rodapé do cardápio</div>
+<pre><code><span class="cm">/* Rodapé centralizado com separador superior */</span>
+<span class="cs">.menu-footer</span> {
+  <span class="cp">text-align</span>: <span class="cv">center</span>;
+  <span class="cp">padding</span>: <span class="cv">1.5rem clamp(1rem, 6%, 3rem) 1.25rem</span>;
+  <span class="cp">margin-top</span>: <span class="cv">1rem</span>;
+  <span class="cp">border-top</span>: <span class="cv">1px dashed var(--pontilhado)</span>;
+}
+
+<span class="cm">/* Ornamento decorativo com símbolos tipográficos */</span>
+<span class="cs">.menu-footer .ornament</span> {
+  <span class="cp">color</span>: <span class="cv">var(--pontilhado)</span>;
+  <span class="cp">font-size</span>: <span class="cv">1rem</span>;
+  <span class="cp">letter-spacing</span>: <span class="cv">0.5em</span>;
+  <span class="cp">margin</span>: <span class="cv">0 0 0.5rem</span>;
+}
+
+<span class="cm">/* Frase final "Buon Appetito!" com fonte decorativa */</span>
+<span class="cs">.menu-footer .buon</span> {
+  <span class="cp">font-family</span>: <span class="cv">'Playfair Display', serif</span>;
+  <span class="cp">font-style</span>: <span class="cv">italic</span>;
+  <span class="cp">font-size</span>: <span class="cv">1.5rem</span>;
+  <span class="cp">color</span>: <span class="cv">var(--verde)</span>;
+  <span class="cp">margin</span>: <span class="cv">0 0 0.5rem</span>;
+}
+
+<span class="cm">/* Endereço e telefone — discretos, menores */</span>
+<span class="cs">.menu-footer address</span> {
+  <span class="cp">font-style</span>: <span class="cv">italic</span>;
+  <span class="cp">font-size</span>: <span class="cv">0.78rem</span>;
+  <span class="cp">color</span>: <span class="cv">var(--texto2)</span>;
+  <span class="cp">margin</span>: <span class="cv">0</span>;
+}</code></pre>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- PASSO 10 -->
+  <section class="passo" id="s10">
+    <div class="passo-header">
+      <div class="passo-num">10</div>
+      <h2>Responsividade e Impressão</h2>
+    </div>
+    <p>O <code>clamp()</code> já cuida da maior parte da responsividade. Para impressão, adicionamos uma regra especial:</p>
+
+    <div class="code-block">
+      <div class="code-label">🎨 styles.css — impressão @media print</div>
+<pre><code><span class="cm">/* Regra de impressão: ativa quando o usuário manda imprimir a página */</span>
+<span class="cs">@media print</span> {
+  <span class="cm">/* Remove o fundo escuro (economia de tinta e melhor resultado) */</span>
+  <span class="cs">body</span> {
+    <span class="cp">background</span>: <span class="cv">white</span>;
+    <span class="cp">padding</span>: <span class="cv">0</span>;
+  }
+
+  <span class="cm">/* Remove a sombra e ocupa toda a largura do papel */</span>
+  <span class="cs">.menu</span> {
+    <span class="cp">max-width</span>: <span class="cv">100%</span>;
+    <span class="cp">box-shadow</span>: <span class="cv">none</span>;
+  }
+}</code></pre>
+    </div>
+
+    <div class="info-box">
+      <strong>Por que usar <code>@media print</code>?</strong><br>
+      Sem essa regra, ao imprimir a página, o fundo escuro verde tentaria ser impresso (gastando muita tinta) e as sombras ficariam feias. A regra <code>@media print</code> só se aplica quando a página vai para a impressora ou para "salvar como PDF".
+    </div>
+
+    <h3>Como o <code>clamp()</code> garante responsividade</h3>
+    <p>Ao usar <code>clamp()</code> nos tamanhos de fonte e nos espaçamentos internos, a página se adapta automaticamente a diferentes tamanhos de tela sem precisar de breakpoints explícitos. Por exemplo:</p>
+    <ul>
+      <li><code>font-size: clamp(1.8rem, 7vw, 3rem)</code> — em celulares o título fica 1.8rem, em tablets cresce proporcionalmente, em desktops fica no máximo 3rem.</li>
+      <li><code>padding: clamp(1rem, 6%, 3rem)</code> — o espaçamento interno se ajusta à largura da tela.</li>
+    </ul>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- PASSO 11 -->
+  <section class="passo" id="s11">
+    <div class="passo-header">
+      <div class="passo-num">11</div>
+      <h2>Personalizando o Projeto</h2>
+    </div>
+    <p>Agora que você entende a estrutura, veja como adaptar para diferentes contextos:</p>
+
+    <h3>O que alterar no HTML</h3>
+    <ul>
+      <li><strong>Nome do restaurante:</strong> mude o <code>&lt;h1&gt;</code> e o <code>&lt;title&gt;</code></li>
+      <li><strong>Eyebrow:</strong> troque "Cucina Italiana" por algo que represente seu estabelecimento</li>
+      <li><strong>Categorias:</strong> renomeie os <code>&lt;h2&gt;</code> dentro de cada <code>.sec</code></li>
+      <li><strong>Pratos:</strong> adicione ou remova blocos <code>.dish</code> conforme necessário</li>
+      <li><strong>Endereço e telefone:</strong> atualize o <code>&lt;address&gt;</code> no rodapé</li>
+    </ul>
+
+    <h3>O que alterar no CSS</h3>
+    <p>Basta trocar as variáveis no <code>:root</code>:</p>
+
+    <div class="code-block">
+      <div class="code-label">🎨 Exemplo: tema para pizzaria</div>
+<pre><code><span class="cs">:root</span> {
+  <span class="cp">--verde</span>:    <span class="cv">#c0392b</span>;  <span class="cm">/* vermelho do tomate */</span>
+  <span class="cp">--vermelho</span>: <span class="cv">#e67e22</span>;  <span class="cm">/* laranja do forno */</span>
+  <span class="cp">--papel</span>:    <span class="cv">#fdf6e3</span>;  <span class="cm">/* creme levemente mais quente */</span>
+}</code></pre>
+    </div>
+
+    <h3>Variações de tema possíveis</h3>
+    <table class="variacoes">
+      <thead>
+        <tr><th>Estabelecimento</th><th>Fonte display</th><th>Cor principal</th><th>Cor acento</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>🍕 Pizzaria</td><td>Oswald ou Anton</td><td>#c0392b (vermelho tomate)</td><td>#e67e22 (laranja)</td></tr>
+        <tr><td>🍔 Hamburgueria</td><td>Bebas Neue</td><td>#1a1a1a (preto)</td><td>#f39c12 (amarelo mostarda)</td></tr>
+        <tr><td>☕ Cafeteria</td><td>Cormorant Garamond</td><td>#6f4e37 (marrom café)</td><td>#d4a76a (caramelo)</td></tr>
+        <tr><td>🌾 Regional</td><td>Merriweather</td><td>#2e7d32 (verde mata)</td><td>#795548 (terra)</td></tr>
+        <tr><td>⬜ Minimalista</td><td>DM Serif Display</td><td>#111111 (quase-preto)</td><td>#888888 (cinza)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- PASSO 12 -->
+  <section class="passo" id="s12">
+    <div class="passo-header">
+      <div class="passo-num">12</div>
+      <h2>Resultado Esperado e Melhorias Futuras</h2>
+    </div>
+
+    <h3>O que você deve ter construído</h3>
+    <ul class="checklist">
+      <li><span class="check-icon">✓</span> Página HTML com estrutura semântica correta</li>
+      <li><span class="check-icon">✓</span> Arquivo CSS com variáveis de cor e reset</li>
+      <li><span class="check-icon">✓</span> Faixas tricolores com pseudo-elementos</li>
+      <li><span class="check-icon">✓</span> Cabeçalho com tipografia elegante e subtítulo decorado</li>
+      <li><span class="check-icon">✓</span> Seções com título em caixa alta e linha decorativa</li>
+      <li><span class="check-icon">✓</span> Pratos com CSS Grid (nome, pontilhado, preço + descrição)</li>
+      <li><span class="check-icon">✓</span> Rodapé com ornamento e frase final</li>
+      <li><span class="check-icon">✓</span> Responsividade com <code>clamp()</code></li>
+      <li><span class="check-icon">✓</span> Regra de impressão com <code>@media print</code></li>
+    </ul>
+
+    <h3>Melhorias para explorar</h3>
+
+    <div class="tip-box">
+      <strong>🖼 Fotos dos pratos:</strong> Adicione um elemento <code>&lt;img&gt;</code> dentro de cada <code>.dish</code> e use <code>border-radius</code> para deixar a foto redonda ou com cantos arredondados.
+    </div>
+
+    <div class="tip-box">
+      <strong>📱 Botão de WhatsApp:</strong> Adicione ao rodapé um link <code>&lt;a href="https://wa.me/55989999xxxx"&gt;</code> com estilo de botão verde para que o cliente faça reservas diretamente.
+    </div>
+
+    <div class="tip-box">
+      <strong>📦 QR Code:</strong> Gere um QR Code que aponte para o link da sua página (sites como <em>qr-code-generator.com</em> fazem isso gratuitamente) e adicione como imagem no rodapé.
+    </div>
+
+    <div class="tip-box">
+      <strong>🌙 Modo escuro:</strong> Use a media query <code>@media (prefers-color-scheme: dark)</code> para sobrescrever as variáveis de cor e criar um tema noturno.
+    </div>
+
+    <div class="tip-box">
+      <strong>📲 Versão mobile mais compacta:</strong> Adicione um <code>@media (max-width: 480px)</code> para reduzir o padding, o tamanho das fontes e simplificar os ornamentos em telas muito pequenas.
+    </div>
+
+    <div class="tip-box">
+      <strong>✨ Animação de entrada:</strong> Use <code>@keyframes</code> e <code>animation</code> para fazer o cardápio "aparecer" suavemente com um <code>fadeIn</code> ao carregar a página.
+    </div>
+
+    <div class="info-box" style="margin-top:2rem;">
+      <strong>Próximo passo:</strong> Experimente criar seu próprio cardápio com tema diferente — troque as fontes no Google Fonts, mude as variáveis de cor e veja como o visual se transforma completamente mantendo a mesma estrutura HTML e CSS.
+    </div>
+  </section>
+
+</main>
+
+<!-- RODAPÉ DO GUIA -->
+<footer style="background:#1a3a1a; color:#88b888; text-align:center; padding:1.5rem; font-family:'Inter',sans-serif; font-size:13px; margin-top:3rem;">
+  Guia didático &mdash; HTML &amp; CSS &mdash; Cardápio Digital Italiano
+</footer>
+
+</body>
+</html>
